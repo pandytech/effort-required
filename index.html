@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimer la durée totale d'un projet avec des tâches horaires</title>
+    <meta name="description" content="Estimez facilement la durée totale d'un projet en partant de tâches horaires détaillées et construisez un planning clair, précis et réaliste.">
+    <meta name="keywords" content="estimer la durée totale d'un projet à partir de tâches horaires, calcul durée projet, addition tâches horaires projet">
+    <meta name="author" content="Calculateur Heure">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="fr">
+    <meta name="revisit-after" content="7 days">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="google-site-verification" content="" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://calculateurheure.fr/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Estimer la durée totale d'un projet avec des tâches horaires">
+    <meta property="og:description" content="Estimez facilement la durée totale d'un projet en partant de tâches horaires détaillées et construisez un planning clair, précis et réaliste.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://calculateurheure.fr/">
+    <meta property="og:site_name" content="Calculateur Heure">
+    <meta property="og:image" content="https://calculateurheure.fr/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Estimation Durée Projet">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="article:author" content="Calculateur Heure">
+    <meta property="article:published_time" content="2026-03-26T12:00:00Z">
+    <meta property="article:modified_time" content="2026-03-26T12:00:00Z">
+    <meta property="article:section" content="Gestion de Projet">
+    <meta property="article:tag" content="Estimation">
+    <meta property="article:tag" content="Planification">
+    <meta property="article:tag" content="Tâches Horaires">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@CalculateurHeure">
+    <meta name="twitter:creator" content="@CalculateurHeure">
+    <meta name="twitter:title" content="Estimer la durée totale d'un projet avec des tâches horaires">
+    <meta name="twitter:description" content="Estimez facilement la durée totale d'un projet en partant de tâches horaires détaillées et construisez un planning clair, précis et réaliste.">
+    <meta name="twitter:image" content="https://calculateurheure.fr/twitter-image.jpg">
+    <meta property="twitter:image:alt" content="Estimation Durée Projet">
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Estimer la durée totale d'un projet avec des tâches horaires",
+        "description": "Estimez facilement la durée totale d'un projet en partant de tâches horaires détaillées et construisez un planning clair, précis et réaliste.",
+        "author": {
+            "@type": "Organization",
+            "name": "Calculateur Heure"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Calculateur Heure",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://calculateurheure.fr/logo.png"
+            }
+        },
+        "datePublished": "2026-03-26T12:00:00Z",
+        "dateModified": "2026-03-26T12:00:00Z",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://calculateurheure.fr/"
+        },
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://calculateurheure.fr/og-image.jpg",
+            "width": 1200,
+            "height": 630
+        },
+        "articleSection": "Gestion de Projet",
+        "keywords": "estimer la durée totale d'un projet à partir de tâches horaires, calcul durée projet, addition tâches horaires projet",
+        "inLanguage": "fr-FR"
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a3a52;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e1eaf5 50%, #d4e4f7 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+        }
+        
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .dashboard-header {
+            background: linear-gradient(135deg, #1e5a96 0%, #2d7ab8 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 40px rgba(30, 90, 150, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dashboard-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .header-title {
+            font-size: 2.8rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .header-subtitle {
+            font-size: 1.2rem;
+            color: #e1eaf5;
+            font-weight: 300;
+        }
+        
+        .gauges-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .gauge-section {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(30, 90, 150, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gauge-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(30, 90, 150, 0.2);
+        }
+        
+        .gauge-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(45, 122, 184, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .gauge-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .gauge-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                #2ecc71 0deg,
+                #2ecc71 120deg,
+                #f39c12 120deg,
+                #f39c12 240deg,
+                #e74c3c 240deg,
+                #e74c3c 360deg
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(30, 90, 150, 0.2);
+            position: relative;
+        }
+        
+        .gauge-inner {
+            width: 130px;
+            height: 130px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        .gauge-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1e5a96;
+        }
+        
+        .gauge-label {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .gauge-needle {
+            position: absolute;
+            width: 4px;
+            height: 60px;
+            background: linear-gradient(180deg, #1e5a96 0%, #2d7ab8 100%);
+            bottom: 50%;
+            left: 50%;
+            transform: translateX(-50%) rotate(-45deg);
+            transform-origin: bottom center;
+            border-radius: 2px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .gauge-center {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: #1e5a96;
+            border-radius: 50%;
+            bottom: 50%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+        
+        .gauge-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .gauge-title {
+            font-size: 1.5rem;
+            color: #1e5a96;
+            margin-bottom: 15px;
+            font-weight: 700;
+            border-bottom: 2px solid #d4e4f7;
+            padding-bottom: 10px;
+        }
+        
+        .gauge-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            text-align: justify;
+            color: #34495e;
+        }
+        
+        .gauge-text a {
+            color: #1e5a96;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            background: rgba(30, 90, 150, 0.1);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
+        .gauge-text a:hover {
+            color: #2d7ab8;
+            border-bottom-color: #2d7ab8;
+            background: rgba(45, 122, 184, 0.15);
+        }
+        
+        .full-width-section {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(30, 90, 150, 0.1);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .full-width-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(45, 122, 184, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .section-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: #1e5a96;
+            margin-bottom: 15px;
+            font-weight: 700;
+            border-bottom: 2px solid #d4e4f7;
+            padding-bottom: 10px;
+        }
+        
+        .section-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            text-align: justify;
+            color: #34495e;
+        }
+        
+        .dashboard-footer {
+            background: linear-gradient(135deg, #1e5a96 0%, #2d7ab8 100%);
+            border-radius: 20px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(30, 90, 150, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dashboard-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer-title {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .footer-subtitle {
+            font-size: 1.1rem;
+            color: #e1eaf5;
+            font-weight: 300;
+        }
+        
+        @media (max-width: 1024px) {
+            .gauges-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            .dashboard-header {
+                padding: 40px 25px;
+            }
+            
+            .header-title {
+                font-size: 2.2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+            }
+            
+            .gauge-section {
+                padding: 30px 25px;
+            }
+            
+            .gauge-circle {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .gauge-inner {
+                width: 105px;
+                height: 105px;
+            }
+            
+            .gauge-number {
+                font-size: 1.8rem;
+            }
+            
+            .gauge-title {
+                font-size: 1.3rem;
+            }
+            
+            .gauge-text {
+                font-size: 0.95rem;
+            }
+            
+            .dashboard-footer {
+                padding: 35px 25px;
+            }
+            
+            .footer-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 15px 10px;
+            }
+            
+            .dashboard-header {
+                padding: 30px 20px;
+            }
+            
+            .header-title {
+                font-size: 1.8rem;
+            }
+            
+            .header-subtitle {
+                font-size: 0.95rem;
+            }
+            
+            .header-icon {
+                font-size: 2.5rem;
+            }
+            
+            .gauge-section {
+                padding: 25px 20px;
+            }
+            
+            .gauge-circle {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .gauge-inner {
+                width: 88px;
+                height: 88px;
+            }
+            
+            .gauge-number {
+                font-size: 1.5rem;
+            }
+            
+            .gauge-title {
+                font-size: 1.1rem;
+            }
+            
+            .gauge-text {
+                font-size: 0.9rem;
+            }
+            
+            .full-width-section {
+                padding: 25px 20px;
+            }
+            
+            .dashboard-footer {
+                padding: 25px 20px;
+            }
+            
+            .footer-title {
+                font-size: 1.3rem;
+            }
+            
+            .footer-icon {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div class="header-content">
+                <div class="header-icon">📊</div>
+                <h1 class="header-title">Estimer la durée totale d'un projet avec des tâches horaires</h1>
+                <p class="header-subtitle">Construisez un planning clair, précis et réaliste</p>
+            </div>
+        </div>
+        
+        <div class="gauges-grid">
+            <div class="gauge-section">
+                <div class="gauge-wrapper">
+                    <div class="gauge-circle">
+                        <div class="gauge-needle"></div>
+                        <div class="gauge-center"></div>
+                        <div class="gauge-inner">
+                            <div class="gauge-number">1</div>
+                            <div class="gauge-label">Étape</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gauge-content">
+                    <div class="gauge-title">Découper le projet</div>
+                    <div class="gauge-text">
+                        <p>Pour bien organiser un projet, il ne suffit pas de fixer une date de début et une date de fin. Il est essentiel d'estimer la durée totale des travaux à partir des tâches concrètes qui composent le projet. En partant de tâches horaires détaillées, vous obtenez une vision plus précise de l'effort nécessaire, vous ajustez vos délais et vous évitez de sous‑évaluer le temps réellement requis. Cette approche transforme une simple idée de projet en planning structuré.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gauge-section">
+                <div class="gauge-wrapper">
+                    <div class="gauge-circle">
+                        <div class="gauge-needle" style="transform: translateX(-50%) rotate(30deg);"></div>
+                        <div class="gauge-center"></div>
+                        <div class="gauge-inner">
+                            <div class="gauge-number">2</div>
+                            <div class="gauge-label">Étape</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gauge-content">
+                    <div class="gauge-title">Lister les tâches</div>
+                    <div class="gauge-text">
+                        <p>La première étape consiste à découper le projet en tâches distinctes. Chaque étape doit être suffisamment précise pour pouvoir lui attribuer un nombre d'heures réaliste: préparation, recherche, réunions, production, relectures, corrections, livraisons intermédiaires, etc. Pour chacune, vous estimez une durée en heures, voire en fractions d'heure. Même si ces chiffres restent approximatifs au départ, ils servent de base solide pour construire votre estimation globale.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gauge-section">
+                <div class="gauge-wrapper">
+                    <div class="gauge-circle">
+                        <div class="gauge-needle" style="transform: translateX(-50%) rotate(100deg);"></div>
+                        <div class="gauge-center"></div>
+                        <div class="gauge-inner">
+                            <div class="gauge-number">3</div>
+                            <div class="gauge-label">Étape</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gauge-content">
+                    <div class="gauge-title">Additionner les durées</div>
+                    <div class="gauge-text">
+                        <p>Une fois la liste établie, l'objectif est d'additionner toutes ces durées pour obtenir un volume total d'heures. Vous pouvez regrouper certaines tâches par phase (analyse, conception, réalisation, tests, suivi) et calculer un sous‑total pour chaque phase avant de les additionner. Cela permet de repérer les blocs les plus gourmands en temps et de vérifier si la répartition est cohérente. À ce stade, vous disposez d'un total d'heures qui représente la charge de travail du projet dans son ensemble.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gauge-section">
+                <div class="gauge-wrapper">
+                    <div class="gauge-circle">
+                        <div class="gauge-needle" style="transform: translateX(-50%) rotate(170deg);"></div>
+                        <div class="gauge-center"></div>
+                        <div class="gauge-inner">
+                            <div class="gauge-number">4</div>
+                            <div class="gauge-label">Étape</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gauge-content">
+                    <div class="gauge-title">Convertir en jours</div>
+                    <div class="gauge-text">
+                        <p>Pour rendre cette durée plus parlante, il est utile de convertir le total d'heures en jours de travail. En fonction de votre rythme (par exemple 7 ou 8 heures par jour), vous divisez le total pour savoir combien de jours pleins représente le projet. Cette conversion vous aide à vérifier si le délai prévu est réaliste. Si vous découvrez qu'un projet estimé à "quelques jours" représente en réalité plusieurs dizaines d'heures, il peut être nécessaire d'ajuster la date de livraison, le nombre de personnes impliquées ou la portée des tâches.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="full-width-section">
+            <div class="section-content">
+                <div class="section-title">Utiliser un outil de calcul</div>
+                <div class="section-text">
+                    <p>Faire ces calculs à la main reste possible, mais devient vite fastidieux dès que la liste de tâches s'allonge ou que les estimations évoluent. L'addition répétée de nombreuses durées augmente le risque d'oubli ou de double comptage. Utiliser un outil simple pour additionner les tâches horaires et visualiser le total vous fait gagner du temps et renforce la fiabilité de vos estimations. Vous pouvez modifier une durée de tâche, ajouter une étape et voir immédiatement l'impact sur le volume global.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="full-width-section">
+            <div class="section-content">
+                <div class="section-title">Calcul heure: votre repère central</div>
+                <div class="section-text">
+                    <p>Dans cette logique, <a href="https://calculateurheure.fr/">calcul heure</a> devient un repère central pour transformer des estimations de tâches horaires en durée globale de projet. En saisissant les heures prévues pour chaque étape, vous obtenez un total clair que vous pouvez ensuite convertir en jours ou en semaines de travail. Cette vision chiffrée vous permet de discuter plus facilement des délais avec un client, une équipe ou un responsable, et d'argumenter vos choix de planning sur la base de chiffres concrets.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="full-width-section">
+            <div class="section-content">
+                <div class="section-title">Conclusion: un outil de pilotage</div>
+                <div class="section-text">
+                    <p>Estimer la durée totale d'un projet à partir de tâches horaires n'est pas qu'un exercice théorique. C'est un outil de pilotage qui vous aide à aligner vos ambitions sur le temps réellement disponible. En prenant l'habitude de détailler vos projets en tâches, d'additionner les durées et de vérifier la cohérence avec vos échéances, vous limitez les retards, vous répartissez mieux la charge de travail et vous créez des plannings plus fiables pour tous les participants.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dashboard-footer">
+            <div class="footer-content">
+                <div class="footer-icon">⏱️</div>
+                <h3 class="footer-title">Maîtrisez votre temps</h3>
+                <p class="footer-subtitle">Estimez précisément, planifiez efficacement, livrez à temps</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
